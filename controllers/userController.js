@@ -115,7 +115,7 @@ const userCtrl = {
             .json({ message: "Otp already sent to ur mail", statusCode: 201 });
           const otp = Math.floor(1000 + Math.random() * 9000);
           console.log("email", email, " has otp: ", otp);
-          mailManager.verifyEmail({ email: email, otp });
+          mailManager.verifyEmail({ email: email, otp:otp });
           console.log("mail sent");
           const newOtp = new Otp({
             email,
