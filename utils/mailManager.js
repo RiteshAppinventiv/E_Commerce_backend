@@ -171,6 +171,24 @@ class MailManager {
 
         const response = await mailtranporter.sendMail(details)
 	}
+	async sendEmail(params) {
+		const mailtranporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: "ritesh.sahoo.trail@gmail.com",
+                pass: "eaveegrulckwizma"
+            }
+        });
+        const details = {
+            to: String(params.email),
+            from: "ritesh.sahoo@appinventiv.com",
+            subject: params.subject,
+            html: `<h3>My name is ${params.fName} ${params.lName}</h3>` + "<p style='font-weight:bold;'>" + params.message + "</p>" // html body
+        }
+
+        const response = await mailtranporter.sendMail(details)
+		console.log("mail response",response);
+	}
 	async composeMail(params) {
 		const mailContent = await (new TemplateUtil(SERVER.TEMPLATE_PATH + "compose.html"))
 			.compileFile({

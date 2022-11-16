@@ -216,6 +216,18 @@ const userCtrl = {
     }
   },
 
+  sendMail: async(req, res) => {
+    try {
+      const { fName, lName, email,subject,message } = req.body;
+      mailManager.sendEmail({fName, lName, email,subject,message});
+      return res
+            .status(200)
+            .json({ message: "Query Submited", statusCode: 200 });
+    } catch (err) {
+      return res.status(200).json({ message: err.message });
+    }
+  },
+
   logout: async (req, res) => {
     try {
       // res.clearCookie("refreshtoken", { path: "/user/refresh_token" });

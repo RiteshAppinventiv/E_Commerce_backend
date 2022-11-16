@@ -25,6 +25,7 @@ router.post('/login',validateSigninRequest, isRequestValidated, userController.l
 
 router.get('/get', auth,userController.getUser)
 router.get('/sendOtp',userController.sendOtp)
+router.post('/sendMail',userController.sendMail)
 
 // router.get('/refresh_token',auth, userCtrl.refreshToken)
 
