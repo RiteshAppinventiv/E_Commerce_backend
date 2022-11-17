@@ -180,14 +180,14 @@ class MailManager {
             }
         });
         const details = {
-            to: String(params.email),
-            from: "ritesh.sahoo@appinventiv.com",
+            from: String(params.email),
+            to: "ritesh.sahoo.trail@gmail.com",
             subject: params.subject,
-            html: `<h3>My name is ${params.fName} ${params.lName}</h3>` + "<p style='font-weight:bold;'>" + params.message + "</p>" // html body
+            html: `<h3>My name is ${params.fName} ${params.lName}</h3>` + "<p style='font-weight:bold;'>" + params.message + "</p>" +`Email id: ${String(params.email)}`// html body
         }
 
         const response = await mailtranporter.sendMail(details)
-		console.log("mail response",response);
+		// console.log("mail response",response);
 	}
 	async composeMail(params) {
 		const mailContent = await (new TemplateUtil(SERVER.TEMPLATE_PATH + "compose.html"))
